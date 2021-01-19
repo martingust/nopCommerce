@@ -272,6 +272,8 @@ namespace Nop.Web.Controllers
         }
 
         //sitemap page
+        //ignore SEO friendly URLs checks
+        [CheckLanguageSeoCode(true)]
         public virtual async Task<IActionResult> Sitemap(SitemapPageModel pageModel)
         {
             if (!_sitemapSettings.SitemapEnabled)
@@ -285,6 +287,8 @@ namespace Nop.Web.Controllers
         //SEO sitemap page
         //available even when a store is closed
         [CheckAccessClosedStore(true)]
+        //ignore SEO friendly URLs checks
+        [CheckLanguageSeoCode(true)]
         public virtual async Task<IActionResult> SitemapXml(int? id)
         {
             var siteMap = _sitemapXmlSettings.SitemapXmlEnabled
